@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GuiHayashi-Contato</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="cont-contato">
+        <form id="meuFormulario">
+            <h1><a href="./index.html"><i class="fa-solid fa-arrow-left"></i> </a>Envie uma mensagenzinha</h1>
+            <p>Me mande uma mensagenzinha</p>
+            <label for="nome">Nome<em>*</em></label>
+            <br>
+            <input type="text" id="nome" name="nome">
+            <br>
+            <br>
+            <label for="email">Email<em>*</em></label>
+            <br>
+            <input type="text" id="email" name="email">
+            <br>
+            <br>
+            <label for="mensagem">Mensagem<em>*</em></label><br>
+            <textarea id="mensagem" name="mensagem" rows="4" cols="50"></textarea><br><br>
+            
+            <button onmousedown="sound1.play()" type="submit" value="Enviar"><i class="fa-solid fa-paper-plane"></i> Enviar</button>
+        </form>
+    </div>   
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.6.4/dist/email.min.js"></script>
+    <script>
+        (function(){
+            emailjs.init('m5AQg_E0IxqtlRugG'); // Substitua com seu User ID do EmailJS
+        })();
+        
+        document.getElementById('meuFormulario').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+    
+            var nome = document.getElementById('nome').value;
+            var email = document.getElementById('email').value;
+            var mensagem = document.getElementById('mensagem').value;
+    
+            var parametros = {
+                to_name: email,  
+                from_name: nome,
+                message: mensagem
+            };
+    
+            emailjs.send('service_gj3e24y', 'template_8b08yx1', parametros)
+                .then(function(response) {
+                    console.log('Email enviado com sucesso!', response);
+                }, function(error) {
+                    console.error('Erro ao enviar email:', error);
+                });
+        });
+
+        var sound1 = new Audio();
+        sound1.src = "./sounds/click.wav";
+    </script>
+</body>
+</html>

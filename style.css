@@ -105,14 +105,14 @@ ul li:hover a span{
 }
 
 .cont-mist{
-    margin-top: 10%;
+    position: absolute;
+    margin-top: 50%;
     align-content: center;
     text-align: center;
     opacity: 0.5;
 }
 
 .cont-mist:hover{
-    margin-top: 10%;
     align-content: center;
     text-align: center;
     opacity: 1;
@@ -131,9 +131,42 @@ ul li:hover a span{
     width: 390px;
     height: 50px;
     font-size: 15px;
+    outline: none;
 }
 
 .cont-contato textarea{
+    background-color: transparent;
+    color: white;
+    border-left: transparent;
+    border-right: transparent;
+    border-top: transparent;
+    height: 100px;
+    width: 390px;
+    font-size: 15px;
+    resize: none;
+    outline: none;
+}
+
+.cont-contato em{
+    color: rgb(255, 0, 85);
+}
+
+.cont-contato label{
+    color: white;    
+}
+
+.cont-contato input{
+    background-color: transparent;
+    color: white;
+    border-left: transparent;
+    border-right: transparent;
+    border-top: transparent;
+    width: 390px;
+    height: 50px;
+    font-size: 15px;
+}
+
+.cont-contato textarea:hover{
     background-color: transparent;
     color: white;
     border-left: transparent;

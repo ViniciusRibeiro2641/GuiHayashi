@@ -49,9 +49,9 @@
     
             emailjs.send('service_gj3e24y', 'template_8b08yx1', parametros)
                 .then(function(response) {
-                    console.log('Email enviado com sucesso!', response);
+                    alert('Email enviado com sucesso!', response);
                 }, function(error) {
-                    console.error('Erro ao enviar email:', error);
+                    alert('Erro ao enviar email:', error);
                 });
         });
 

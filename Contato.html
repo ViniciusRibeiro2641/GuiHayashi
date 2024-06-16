@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GuiHayashi-Contato</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="cont-contato">
+        <form id="meuFormulario">
+            <h1>Envie uma mensagenzinha</h1>
+            <p>Me mande uma mensagenzinha</p>
+            <label for="nome">Nome<em>*</em></label>
+            <br>
+            <input type="text" id="nome" name="nome">
+            <br>
+            <br>
+            <label for="email">Email<em>*</em></label>
+            <br>
+            <input type="text" id="email" name="email">
+            <br>
+            <br>
+            <label for="mensagem">Mensagem<em>*</em></label><br>
+            <textarea id="mensagem" name="mensagem" rows="4" cols="50"></textarea><br><br>
+            
+            <button type="submit" value="Enviar">Enviar</button>
+        </form>
+    </div>   
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.6.4/dist/email.min.js"></script>
+    <script>
+        (function(){
+            emailjs.init('m5AQg_E0IxqtlRugG'); // Substitua com seu User ID do EmailJS
+        })();
+        
+        document.getElementById('meuFormulario').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+    
+            var nome = document.getElementById('nome').value;
+            var email = document.getElementById('email').value;
+            var mensagem = document.getElementById('mensagem').value;
+    
+            var parametros = {
+                to_name: email,  
+                from_name: nome,
+                message: mensagem
+            };
+    
+            emailjs.send('service_gj3e24y', 'template_8b08yx1', parametros)
+                .then(function(response) {
+                    console.log('Email enviado com sucesso!', response);
+                }, function(error) {
+                    console.error('Erro ao enviar email:', error);
+                });
+        });
+    </script>
+</body>
+</html>
